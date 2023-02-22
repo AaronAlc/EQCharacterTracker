@@ -9,7 +9,6 @@ import java.lang.reflect.Field;
 public class CharacterArmorUtil {
     public static void setNullFieldsToZero(ArmorEntity armorEntity) {
         Field[] superClassFields = armorEntity.getClass().getSuperclass().getDeclaredFields();
-        Field[] objectClassFields = armorEntity.getClass().getDeclaredFields();
 
         for(Field field: superClassFields){
             try {

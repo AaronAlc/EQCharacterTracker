@@ -13,7 +13,7 @@ public interface CharacterRepo extends JpaRepository<CharacterEntity, Long> {
     CharacterEntity findCharacterEntityByUserIdAndName(Long userId, String name);
     CharacterEntity findCharacterEntityByNameAndServer(String name, ServerEnum server);
 
-    List<CharacterEntity> findCharacterEntityByUserId(Long userId);
+    List<CharacterEntity> findCharacterEntitiesByUserId(Long userId);
 
 }
 

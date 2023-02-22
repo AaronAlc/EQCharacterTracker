@@ -76,7 +76,7 @@ public class CharacterService {
     }
 
     public List<Character> refreshCharacters(Long userId) {
-        List<CharacterEntity> characterEntityList = characterRepo.findCharacterEntityByUserId(userId);
+        List<CharacterEntity> characterEntityList = characterRepo.findCharacterEntitiesByUserId(userId);
         characterEntityList.stream().forEach(e -> thfCharacterService.updateExternalArmorDetails(e));
         return convertCharacterEntityListToCharacterModelList(characterEntityList);
     }

@@ -5,6 +5,7 @@ import com.eq.charactertracker.model.Character;
 import com.eq.charactertracker.model.CharacterEquipSlot;
 import com.eq.charactertracker.service.CharacterService;
 import com.eq.charactertracker.service.THFCharacterService;
+import com.eq.charactertracker.service.THFItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +26,7 @@ import java.util.List;
 public class CharacterController {
     private final CharacterService characterService;
     private final THFCharacterService thfCharacterService;
+    private final THFItemService thfItemService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping({"{userId}"})
@@ -65,5 +67,12 @@ public class CharacterController {
     public List<CharacterEquipSlot> getCharacterArmor(@PathVariable Long characterId, @PathVariable ServerEnum serverName){
         return thfCharacterService.getArmorByCharacterIdAndServer(characterId, serverName);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping({"refresh/{userId}/inventory"})
+    public List<Character> refreshInventory(@PathVariable Long userId){
+        return thfItemService.updateInventoryInformation(userId);
+    }
+
 
 }
